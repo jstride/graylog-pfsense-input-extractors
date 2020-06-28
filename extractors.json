@@ -1,0 +1,38 @@
+{
+    "extractors": [
+      {
+        "title": "Extract Suricata Application Name from barnyard2",
+        "extractor_type": "regex",
+        "converters": [
+          {
+            "type": "lowercase",
+            "config": {}
+          }
+        ],
+        "order": 0,
+        "cursor_strategy": "copy",
+        "source_field": "message",
+        "target_field": "application_name",
+        "extractor_config": {
+          "regex_value": "\\[[0-9]:[0-9]*:[0-9]\\] (SURICATA) .*"
+        },
+        "condition_type": "regex",
+        "condition_value": "\\[[0-9]:[0-9]*:[0-9]\\] (SURICATA) .*"
+      },
+      {
+        "title": "General Application Name Extractor",
+        "extractor_type": "regex",
+        "converters": [],
+        "order": 0,
+        "cursor_strategy": "copy",
+        "source_field": "message",
+        "target_field": "application_name",
+        "extractor_config": {
+          "regex_value": "(^[a-z-]+).*"
+        },
+        "condition_type": "regex",
+        "condition_value": "(^[a-z-]+).*"
+      }
+    ],
+    "version": "3.2.5"
+  }
